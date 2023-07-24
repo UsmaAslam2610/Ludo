@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ludo BU</title>
+
+    <link href="bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styleSheet.css">
+    <script src="jquery.min.js"></script>
+    <script src="Ludo.js"></script>
+</head>
+
+<body>
+    <div class="container" style="margin-top: 20px;">
+        <div id="diceBox" style="background-color:transparent;">
+            <div><img id="dice1" src="red.png"></div>
+            <button type="button" onclick="roll();" id="btn" class="btn"><img id="dice" src="dice.jpg"></button>
+        </div>
+        <div id="diceBox1" style="background-color:transparent;">
+            <div><img id="dice2" src="blue.png"></div>
+        </div>
+        <button type="button" id="restarts" onclick="restart();"><b> Restart</b></button>
+
+        <div style=" width:700px; float:left">
+            <!-- Box Red & Row # 01 
+                    Column 01 -->
+            <div class="row" style="height:212px">
+                <div class="col playerBox Red">
+                    <!-- -->
+                    <div class="d-flex justify-content-center innerBox1" style="background-color: rgb(168, 50, 50);">
+                        <div class="innerBox2" style="background-color:rgb(255, 255, 255);">
+                            <section class="d-flex justify-content-center sec1">
+                                <div id="rh1" class=" d-flex justify-content-center m-2 home align-items-center">
+                                    <div class="redMarble" id="r1" onclick="select(event)"></div>
+                                </div>
+                                <div id="rh2" class=" d-flex justify-content-center m-2 home align-items-center">
+                                    <div class="redMarble" id="r2" onclick="select(event)"></div>
+                                </div>
+                            </section>
+                            <section class="d-flex justify-content-center sec2">
+                                <div id="rh3" class="d-flex justify-content-center m-2 home align-items-center">
+                                    <div class="redMarble" id="r3" onclick="select(event)"></div>
+                                </div>
+                                <div id="rh4" class=" d-flex justify-content-center m-2 home align-items-center">
+                                    <div class="redMarble" id="r4" onclick="select(event)"></div>
+                                </div>
+                            </section>
+                        </div>
+                    </div>
+                </div>
+                <!-- Small green Boxes & column 02 -->
+                <div class="col-2" style="border-style: solid;border-width:1px; width: 150px;">
+                    <div class="row" style=" height: 35px; border-style: solid;border-width:1px ;">
+                        <div id="gw1" class="col d-flex justify-content-center smolBox">
+                        </div>
+                        <div id="gw2" class="col d-flex justify-content-center smolBox">
+                        </div>
+                        <div id="gw3" class="col d-flex justify-content-center smolBox">
+                        </div>
+                    </div>
+                    <div class="row" style=" height: 35px; border-style: solid;border-width:1px ;">
+                        <div id="gw4" class="col d-flex justify-content-center smolBox">
+                        </div>
+                        <div id="gg1" class="col d-flex align-items-center Green">
+                        </div>
+                        <div id="gs" class="col d-flex justify-content-center  Green">
+                        </div>
+                    </div>
+                    <div class="row" style=" height: 35px; border-style: solid;border-width:1px ;">
+                        <div id="gws5" class="col d-flex align-items-center Green">
+                        </div>
+                        <div id="gg2" class="col d-flex justify-content-center Green ">
+                        </div>
+                        <div id="gw6" class="col d-flex justify-content-center smolBox">
+                        </div>
+                    </div>
+                    <div class="row" style=" height: 35px; border-style: solid;border-width:1px ;">
+                        <div id="gw7" class="col d-flex justify-content-center smolBox">
+                        </div>
+                        <div id="gg3" class="col d-flex justify-content-center  Green">
+                        </div>
+                        <div id="gw8" class="col d-flex justify-content-center smolBox">
+                        </div>
+                    </div>
+                    <div class="row" style=" height: 35px; border-style: solid;border-width:1px ;">
+                        <div id="gw9" class="col d-flex justify-content-center smolBox">
+                        </div>
+                        <div id="gg4" class="col d-flex justify-content-center Green">
+                        </div>
+                        <div id="gw10" class="col d-flex justify-content-center smolBox">
+                        </div>
+                    </div>
+                    <div class="row" style=" height: 35px; border-style: solid;border-width:1px ;">
+                        <div id="gw11" class="col d-flex justify-content-center smolBox">
+                        </div>
+                        <div id="gg5" class="col d-flex justify-content-center Green">
+                        </div>
+                        <div id="gw12" class="col d-flex justify-content-center smolBox">
+                        </div>
+                    </div>
+                </div>
+                <!-- Green box & column 03 -->
+                <div class="col playerBox Green">
+                    <!-- rgb(117, 185, 154); -->
+                    <div class="d-flex justify-content-center innerBox1"
+                        style="background-color: #016131;margin-left: 25px;">
+                        <div class="innerBox2" style="background-color: rgb(255, 255, 255); ">
+                            <section class="d-flex justify-content-center sec1">
+                                <div id="gh1" class=" d-flex justify-content-center m-2 home align-items-center ">
+                                    <div class="marble m-2" id="g1"></div>
+                                </div>
+                                <div id="gh2" class="d-flex justify-content-center m-2 home align-items-center ">
+                                    <div class="marble m-2" id="g2"></div>
+                                </div>
+                            </section>
+                            <section class="d-flex justify-content-center sec2">
+                                <div id="gh3" class="m-2 d-flex justify-content-center home align-items-center ">
+                                    <div class="marble m-2" id="g3"></div>
+                                </div>
+                                <div id="gh4" class="m-2 d-flex justify-content-center home align-items-center ">
+                                    <div class="marble m-2" id="g4"></div>
+                                </div>
+                            </section>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <!-- Small Red boxes & Row #02 column 01 -->
+            <div class="row" style="height:150px">
+                <div class="col" style="border-style: solid;border-width:1px">
+                    <div class="row" style=" height: 50px; border-style: solid;border-width:1px ;">
+                        <div id="rw1" class="col d-flex align-items-center smolBox">
+                        </div>
+                        <div id="rs" class="col d-flex align-items-center Red">
+                        </div>
+                        <div id="rw2" class="col d-flex align-items-center smolBox">
+                        </div>
+                        <div id="rw3" class="col d-flex align-items-center smolBox">
+                        </div>
+                        <div id="rw4" class="col d-flex align-items-center smolBox">
+                        </div>
+                        <div id="rw5" class="col d-flex align-items-center smolBox">
+                        </div>
+                    </div>
+                    <div class="row" style=" height: 50px; border-style: solid;border-width:1px ;">
+                        <div id="rw6" class="col d-flex align-items-center smolBox ">
+                        </div>
+                        <div id="rr1" class="col d-flex align-items-center Red">
+                        </div>
+                        <div id="rr2" class="col d-flex align-items-center Red">
+                        </div>
+                        <div id="rr3" class="col d-flex align-items-center Red">
+                        </div>
+                        <div id="rr4" class="col d-flex align-items-center Red">
+                        </div>
+                        <div id="rr5" class="col d-flex align-items-center Red">
+                        </div>
+                    </div>
+                    <div class="row" style=" height: 50px; border-style: solid;border-width:1px ;">
+                        <div id="rw7" class="col d-flex align-items-center smolBox">
+                        </div>
+                        <div id="rw8" class="col d-flex align-items-center smolBox">
+                        </div>
+                        <div id="rws9" class="col d-flex align-items-center Red">
+                        </div>
+                        <div id="rw10" class="col d-flex align-items-center smolBox">
+                        </div>
+                        <div id="rw11" class="col d-flex align-items-center smolBox">
+                        </div>
+                        <div id="rw12" class="col d-flex align-items-center smolBox">
+                        </div>
+                    </div>
+                </div>
+                <!-- Victory Box & column 02 -->
+                <div class="col-3 d-flex align-items-center"
+                    style=" height: -2px;width: 150px; border-style: solid;border-width:1px ;">
+                    <section>
+                        <div id="win" class="p-3 d-flex flex-column justify-content-center"
+                            style="height:120px;  width:60px">
+                        </div>
+                    </section>
+                    <section style="margin-right: 20px;">
+                        <div id="win1" class="p-3 d-flex flex-column justify-content-center"
+                            style="height:120px; width: 60px;">
+                    </section>
+                </div>
+                <!-- Small Blue Boxes & column 03 -->
+
+                <div class="col" ; style="border-style: solid;border-width:1px;">
+                    <div class="row" style=" height: 50px; border-style: solid;border-width:1px ;">
+                        <div id="bw1" class="col d-flex align-items-center smolBox">
+                        </div>
+                        <div id="bw2" class="col d-flex align-items-center smolBox">
+                        </div>
+                        <div id="bw3" class="col d-flex align-items-center smolBox">
+                        </div>
+                        <div id="bws4" class="col d-flex align-items-center Blue">
+                        </div>
+                        <div id="bw5" class="col d-flex align-items-center smolBox">
+                        </div>
+                        <div id="bw6" class="col d-flex align-items-center smolBox">
+                        </div>
+                    </div>
+                    <div class="row" style=" height: 50px; border-style: solid;border-width:1px ;">
+                        <div id="bb1" class="col d-flex align-items-center Blue">
+                        </div>
+                        <div id="bb2" class="col d-flex align-items-center Blue">
+                        </div>
+                        <div id="bb3" class="col d-flex align-items-center  Blue">
+                        </div>
+                        <div id="bb4" class="col d-flex align-items-center Blue">
+                        </div>
+                        <div id="bb5" class="col d-flex align-items-center Blue">
+                        </div>
+                        <div id="bw7" class="col d-flex align-items-center smolBox">
+                        </div>
+                    </div>
+                    <div class="row" style=" height: 50px; border-style: solid;border-width:1px ;">
+                        <div id="bw8" class="col d-flex align-items-center smolBox">
+                        </div>
+                        <div id="bw9" class="col d-flex align-items-center smolBox">
+                        </div>
+                        <div id="bw10" class="col d-flex align-items-center smolBox">
+                        </div>
+                        <div id="bw11" class="col d-flex align-items-center smolBox">
+                        </div>
+                        <div id="bs" class="col d-flex align-items-center Blue">
+                        </div>
+                        <div id="bw12" class="col d-flex align-items-center smolBox">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Yellow Box & Row # 03 column 01  -->
+            <div class="row" style="height:212px; border-style: solid;border-width:1px;">
+                <div class="col playerBox Yellow">
+                    <div class="d-flex justify-content-center innerBox1" style="background-color:rgb(208, 231, 0);">
+                        <div class="innerBox2" style="background-color: white;">
+                            <section class="d-flex justify-content-center sec1">
+                                <div id='yh1' class=" d-flex justify-content-center m-2 home align-items-center ">
+                                    <div class="marble m-2" id="y1"></div>
+                                </div>
+                                <div id='yh2' class="d-flex justify-content-center m-2 home align-items-center ">
+                                    <div class="marble m-2" id="y2"></div>
+                                </div>
+                            </section>
+                            <section class="d-flex justify-content-center sec2">
+                                <div id='yh3' class="m-2 d-flex justify-content-center home align-items-center ">
+                                    <div class="marble m-2" id="y3"></div>
+                                </div>
+                                <div id='yh4' class="m-2 d-flex justify-content-center home align-items-center ">
+                                    <div class="marble m-2" id="y4"></div>
+                                </div>
+                            </section>
+                        </div>
+                    </div>
+                </div>
+                <!-- column 02 & small Yellow boxes -->
+                <div class="col-2" style=" width: 150px; border-style: solid;border-width:1px;">
+                    <div class="row" style=" height: 35px; border-style: solid;border-width:1px ;">
+                        <div id="yw1" class="col d-flex align-items-center smolBox">
+                        </div>
+                        <div id="yy1" class="col d-flex align-items-center Yellow">
+                        </div>
+                        <div id="yw2" class="col d-flex align-items-center smolBox">
+                        </div>
+                    </div>
+                    <div class="row" style=" height: 35px; border-style: solid;border-width:1px ;">
+                        <div id="yw3" class="col d-flex align-items-center smolBox">
+                        </div>
+                        <div id="yy2" class="col d-flex align-items-center Yellow">
+                        </div>
+                        <div id="yw4" class="col d-flex align-items-center smolBox">
+                        </div>
+                    </div>
+                    <div class="row" style=" height: 35px; border-style: solid;border-width:1px ;">
+                        <div id="yw5" class="col d-flex align-items-center smolBox">
+                        </div>
+                        <div id="yy3" class="col d-flex align-items-center Yellow">
+                        </div>
+                        <div id="yw6" class="col d-flex align-items-center smolBox">
+                        </div>
+                    </div>
+                    <div class="row" style=" height: 35px; border-style: solid;border-width:1px ;">
+                        <div id="yw7" class="col d-flex align-items-center smolBox">
+                        </div>
+                        <div id="yy4" class="col d-flex align-items-center Yellow">
+                        </div>
+                        <div id="yws8" class="col d-flex align-items-center Yellow">
+                        </div>
+                    </div>
+                    <div class="row" style=" height: 35px; border-style: solid;border-width:1px ;">
+                        <div id="ys" class="col d-flex align-items-center Yellow">
+                        </div>
+                        <div id="yy5" class="col d-flex align-items-center Yellow">
+                        </div>
+                        <div id="yw9" class="col d-flex align-items-center smolBox">
+                        </div>
+                    </div>
+                    <div class="row" style=" height: 35px; border-style: solid;border-width:1px ;">
+                        <div id="yw10" class="col d-flex align-items-center smolBox">
+                        </div>
+                        <div id="yw11" class="col d-flex align-items-center smolBox">
+                        </div>
+                        <div id="yw12" class="col d-flex align-items-center smolBox">
+                        </div>
+                    </div>
+                </div>
+                <!-- Blue Box & column 03 -->
+                <div class="col playerBox Blue">
+                    <div class="d-flex justify-content-center innerBox1" style="background-color: rgb(12, 53, 141);">
+                        <div class="innerBox2" style="background-color: rgb(255, 255, 255);">
+                            <section class="d-flex justify-content-center sec1">
+                                <div id="bh1" class=" d-flex justify-content-center m-2 home align-items-center ">
+                                    <div class="blueMarble" id="b1" onclick="select(event)"></div>
+                                </div>
+                                <div id="bh2" class=" d-flex justify-content-center m-2 home align-items-center ">
+                                    <div class="blueMarble" id="b2" onclick="select(event)"></div>
+                                </div>
+                            </section>
+                            <section class="d-flex justify-content-center  sec2">
+                                <div id="bh3" class="m-2 d-flex justify-content-center align-items-center  home">
+                                    <div class="blueMarble" id="b3" onclick="select(event)"></div>
+                                </div>
+                                <div id="bh4" class="m-2 d-flex justify-content-center align-items-center home">
+                                    <div class="blueMarble" id="b4" onclick="select(event)"></div>
+                                </div>
+                            </section>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
